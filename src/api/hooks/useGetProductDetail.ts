@@ -1,3 +1,4 @@
+// useGetProductDetail.ts
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 import type { ProductData } from '@/types';

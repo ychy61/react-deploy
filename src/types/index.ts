@@ -15,6 +15,10 @@ export type ProductData = {
   price: number;
   imageUrl: string;
   categoryId: number;
+  createdAt?: string;
+  updatedAt?: string;
+  wishUserId?: number[];
+  optionsId?: number[];
 };
 
 export type ProductOptionsData = {
@@ -22,6 +26,8 @@ export type ProductOptionsData = {
   name: string;
   quantity: number;
   productId: number;
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 export type GoodsDetailOptionItemData = {
