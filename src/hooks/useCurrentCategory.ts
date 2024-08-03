@@ -12,7 +12,10 @@ export const useCurrentCategory = ({ categoryId }: Props) => {
     return !isLoading && !isError && data !== undefined;
   }, [data, isLoading, isError]);
 
-  const currentCategory = useMemo(() => getCurrentCategory(categoryId, data ?? []), [categoryId, data]);
+  const currentCategory = useMemo(
+    () => getCurrentCategory(categoryId, data ?? []),
+    [categoryId, data],
+  );
 
   return {
     isRender,
