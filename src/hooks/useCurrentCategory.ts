@@ -9,15 +9,13 @@ export const useCurrentCategory = ({ categoryId }: Props) => {
   const { data, isLoading, isError } = useGetCategories();
 
   const isRender = useMemo(() => {
-    if (isLoading || isError) return false;
-    if (!data) return false;
-    return true;
+    return !isLoading && !isError && data !== undefined;
   }, [data, isLoading, isError]);
 
-  const currentTheme = getCurrentCategory(categoryId, data ?? []);
+  const currentCategory = useMemo(() => getCurrentCategory(categoryId, data ?? []), [categoryId, data]);
 
   return {
     isRender,
-    currentTheme,
+    currentCategory,
   };
 };

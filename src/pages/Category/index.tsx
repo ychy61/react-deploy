@@ -7,11 +7,11 @@ import { RouterPath } from '@/routes/path';
 
 export const CategoryPage = () => {
   const { categoryId = '' } = useParams<{ categoryId: string }>();
-  const { isRender, currentTheme } = useCurrentCategory({ categoryId });
+  const { isRender, currentCategory } = useCurrentCategory({ categoryId });
 
   if (!isRender) return null;
 
-  if (!currentTheme) {
+  if (!currentCategory) {
     return <Navigate to={RouterPath.notFound} />;
   }
 

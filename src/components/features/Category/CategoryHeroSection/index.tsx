@@ -1,3 +1,4 @@
+// CategoryHeroSection.tsx
 import styled from '@emotion/styled';
 
 import { Container } from '@/components/common/layouts/Container';
@@ -10,21 +11,21 @@ type Props = {
 };
 
 export const CategoryHeroSection = ({ categoryId }: Props) => {
-  const { isRender, currentTheme } = useCurrentCategory({ categoryId });
+  const { isRender, currentCategory } = useCurrentCategory({ categoryId });
 
   if (!isRender) return null;
 
-  if (!currentTheme) {
+  if (!currentCategory) {
     return null;
   }
 
-  const { color, name, description } = currentTheme;
+  const { backgroundColor, label, title } = currentCategory;
 
   return (
-    <Wrapper backgroundColor={color}>
+    <Wrapper backgroundColor={backgroundColor}>
       <Container>
-        <Label>{name}</Label>
-        <Title>{description}</Title>
+        <Label>{label}</Label>
+        <Title>{title}</Title>
       </Container>
     </Wrapper>
   );
@@ -71,5 +72,5 @@ const Title = styled.h1`
 `;
 
 export const getCurrentCategory = (categoryId: string, categoryList: CategoryData[]) => {
-  return categoryList.find((category) => category.id.toString() === categoryId);
+  return categoryList.find((category) => category.categoryId.toString() === categoryId);
 };
