@@ -1,3 +1,4 @@
+// authMockHandler.ts
 import { rest } from 'msw';
 
 import { BASE_URL } from '@/api/instance/index';
