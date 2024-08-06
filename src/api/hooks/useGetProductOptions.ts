@@ -1,3 +1,4 @@
+import type { UseQueryOptions } from '@tanstack/react-query';
 import { useSuspenseQuery } from '@tanstack/react-query';
 
 import type { ProductOptionsData } from '@/types';
@@ -19,9 +20,10 @@ export const getProductOptions = async (params: ProductDetailRequestParams) => {
   return response.data;
 };
 
-export const useGetProductOptions = ({ productId }: Props) => {
-  return useSuspenseQuery({
+export const useGetProductOptions = ({ productId }: Props, queryOptions?: UseQueryOptions<ProductOptionsResponseData>) => {
+  return useSuspenseQuery<ProductOptionsResponseData>({
     queryKey: [getProductOptionsPath(productId)],
     queryFn: () => getProductOptions({ productId }),
+    ...queryOptions,
   });
 };
